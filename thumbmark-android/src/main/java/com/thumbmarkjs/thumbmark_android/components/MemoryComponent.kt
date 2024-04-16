@@ -10,7 +10,10 @@ import com.thumbmarkjs.thumbmark_android.models.Memory
 
 object MemoryComponent : Component<Memory> {
     override fun getComponent(context: Context?): Memory {
-        return Memory(ramSize(context), diskSize)
+        return Memory(
+            ram = ramSize(context),
+            diskSize = diskSize
+        )
     }
 
     private fun ramSize(context: Context?): Long {

@@ -8,8 +8,8 @@ import com.thumbmarkjs.thumbmark_android.models.Communication
 object CommunicationComponent : Component<Communication> {
     override fun getComponent(context: Context?): Communication {
         return Communication(
-            context?.resources?.configuration?.mnc,
-            context?.resources?.configuration?.mcc
+            mobileNetworkCode = context?.resources?.configuration?.mnc,
+            mobileCountryCode = context?.resources?.configuration?.mcc
         )
     }
 }
