@@ -8,7 +8,7 @@ import org.junit.Test
 import org.junit.Assert.*
 
 /**
- * Example local unit test, which will execute on the development machine (host).
+ * Basic unit tests to verify core functionality of Thumbmark library.
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
@@ -44,5 +44,6 @@ class ThumbmarkUnitTests {
 //        val fingerprint = MockFingerprint.fingerprint
 //        val expectedId = MockFingerprint.expectedId
 //        val value = Thumbmark.id(this, "SHA-256", fingerprint)
+//        assertEquals(expectedId, value)
 //    }
 }
