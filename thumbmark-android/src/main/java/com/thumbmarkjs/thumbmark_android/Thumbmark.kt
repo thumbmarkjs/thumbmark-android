@@ -22,7 +22,6 @@ object Thumbmark {
     /**
      * Returns a strongly-typed object representing the current devices known parameters.
      * This function is run on the thread that it was called from.
-     * It can be particularly long running depending on the algorithm that is passed in (default is SHA-256).
      *
      * @param context
      * @return
