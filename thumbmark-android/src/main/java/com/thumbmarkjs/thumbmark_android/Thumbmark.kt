@@ -17,7 +17,7 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 object Thumbmark {
-    private var components: List<ThumbmarkComponent>? = null
+    internal var components: List<ThumbmarkComponent>? = null
 
     /**
      * Returns a strongly-typed object representing the current devices known parameters.
@@ -66,8 +66,8 @@ object Thumbmark {
      * @param algorithm
      */
     @Throws(NoSuchAlgorithmException::class)
-    fun id(context: Context, algorithm: String = "SHA-256") = MessageDigest
+    fun id(context: Context, algorithm: String = "SHA-256", fingerprint: Fingerprint = fingerprint(context)) = MessageDigest
         .getInstance(algorithm)
-        .digest(Json.encodeToString(fingerprint(context)).toByteArray())
+        .digest(Json.encodeToString(fingerprint).toByteArray())
         .fold("") { str, it -> str + "%02x".format(it) }
 }
