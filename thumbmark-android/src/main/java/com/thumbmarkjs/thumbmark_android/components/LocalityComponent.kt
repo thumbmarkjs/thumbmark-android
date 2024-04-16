@@ -13,17 +13,17 @@ object LocalityComponent : Component<Locality> {
     @SuppressLint("NewApi")
     override fun getComponent(context: Context?): Locality {
         return Locality(
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.country,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.language,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.script,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.isO3Country,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.isO3Language,
-            Calendar.getInstance()
+            country = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.country,
+            languageCode = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.language,
+            script = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.script,
+            isO3Country = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.isO3Country,
+            isO3Language = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.N }?.locales?.get(0)?.isO3Language,
+            calendarIdentifier = Calendar.getInstance()
                 .takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.O }?.calendarType,
-            Calendar.getInstance()
+            timezone = Calendar.getInstance()
                 .takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.O }?.timeZone?.id,
-            DateFormat.is24HourFormat(context),
-            LocalePreferences.getTemperatureUnit()
+            twentyFourHourTimeEnabled = DateFormat.is24HourFormat(context),
+            temperatureUnit = LocalePreferences.getTemperatureUnit()
         )
     }
 }

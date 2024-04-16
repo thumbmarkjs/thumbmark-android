@@ -11,11 +11,12 @@ import com.thumbmarkjs.thumbmark_android.models.Accessibility
 object AccessibilityComponent : Component<Accessibility> {
     @SuppressLint("NewApi")
     override fun getComponent(context: Context?): Accessibility {
-        return Accessibility(context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.S }?.fontWeightAdjustment ?: 0,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.O }?.fontScale,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.O }?.colorMode ?: 0,
-            context?.resources?.displayMetrics?.scaledDensity,
-            (context?.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager)?.isTouchExplorationEnabled ?: false,
-            context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.R }?.isNightModeActive ?: false)
+        return Accessibility(
+            fontWeightAdjustment = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.S }?.fontWeightAdjustment ?: 0,
+            fontScale = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.O }?.fontScale,
+            colorMode = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.O }?.colorMode ?: 0,
+            density = context?.resources?.displayMetrics?.scaledDensity,
+            touchExplorationEnabled = (context?.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager)?.isTouchExplorationEnabled ?: false,
+            nightModeEnabled = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.R }?.isNightModeActive ?: false)
     }
 }

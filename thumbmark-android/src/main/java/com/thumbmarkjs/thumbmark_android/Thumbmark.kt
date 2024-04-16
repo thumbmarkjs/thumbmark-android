@@ -19,6 +19,14 @@ import java.security.NoSuchAlgorithmException
 object Thumbmark {
     private var components: List<ThumbmarkComponent>? = null
 
+    /**
+     * Returns a strongly-typed object representing the current devices known parameters.
+     * This function is run on the thread that it was called from.
+     * It can be particularly long running depending on the algorithm that is passed in (default is SHA-256).
+     *
+     * @param context
+     * @return
+     */
     fun fingerprint(context: Context): Fingerprint {
         val captureDevices: List<CaptureDevice> = CaptureDevicesComponent.getComponent(context)
         val processor = ProcessorComponent.getComponent(context)
@@ -30,14 +38,14 @@ object Thumbmark {
         val components: List<ThumbmarkComponent>? = components
 
         return Fingerprint(
-            captureDevices,
-            processor,
-            device,
-            memory,
-            accessibility,
-            locality,
-            communication,
-            components
+            captureDevices = captureDevices,
+            processor = processor,
+            device = device,
+            memory = memory,
+            accessibility = accessibility,
+            locality = locality,
+            communication = communication,
+            components = components
         )
     }
 
@@ -58,7 +66,7 @@ object Thumbmark {
      * @param algorithm
      */
     @Throws(NoSuchAlgorithmException::class)
-    fun id(algorithm: String = "SHA-256", context: Context) = MessageDigest
+    fun id(context: Context, algorithm: String = "SHA-256") = MessageDigest
         .getInstance(algorithm)
         .digest(Json.encodeToString(fingerprint(context)).toByteArray())
         .fold("") { str, it -> str + "%02x".format(it) }

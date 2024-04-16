@@ -9,10 +9,11 @@ import com.thumbmarkjs.thumbmark_android.models.Device
 
 object DeviceComponent : Component<Device> {
     override fun getComponent(context: Context?): Device {
-        return Device(Build.DEVICE,
-            Build.MODEL,
-            Build.HOST,
-            System.getProperty("os.version"),
-            System.getProperty("os.name"))
+        return Device(
+            machine = Build.DEVICE,
+            model = Build.MODEL,
+            hostName = Build.HOST,
+            osVersion = System.getProperty("os.version"),
+            osName = System.getProperty("os.name"))
     }
 }
