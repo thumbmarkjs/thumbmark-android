@@ -29,11 +29,11 @@ Once you have added JitPack to your project, you can import this library by addi
 
 ```kotlin
 dependencies {
-    implementation 'com.github.thumbmarkjs:thumbmark-kotlin:0.1.+'
+    implementation 'com.github.thumbmarkjs:thumbmark-android:0.1.+'
 }
 ```
 ## Usage
-The SDK provides a singleton by way of `Thumbmark.kt` This singletone provides two main values; A string identifier and a `Fingerprint` object. 
+The SDK provides a singleton by way of `Thumbmark.kt` This singleton provides two main values; A string identifier and a `Fingerprint` object. 
 
 ### Device identifier
 Device identifiers are hashed, this means that they can not be converted back to a fingerprint. You can obtain a, SHA256 hashed, device identifier with the following:
@@ -84,4 +84,4 @@ ThumbmarkAndroid has been developed with 🧡 by [Ordermentum](https://orderment
 
 ## License
 
-ThumbarkAndroid is released under the MIT license. [See LICENSE](https://github.com/thumbmarkjs/thumbmark-kotlin/blob/main/LICENSE) for details.
+ThumbarkAndroid is released under the MIT license. [See LICENSE](https://github.com/thumbmarkjs/thumbmark-android/blob/main/LICENSE) for details.
