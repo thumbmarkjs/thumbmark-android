@@ -70,8 +70,8 @@ object Thumbmark {
      */
     fun id(
         context: Context,
-        algorithm: String = "SHA-256",
         scope: CoroutineScope = CoroutineScope(Dispatchers.IO),
+        algorithm: String = "SHA-256",
         fingerprint: Fingerprint = fingerprint(context),
         onSuccess: (String) -> Unit,
         onError: (Exception) -> Unit = {}
