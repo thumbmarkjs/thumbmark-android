@@ -66,7 +66,12 @@ object Thumbmark {
      * This function is run on `Dispatchers.IO`.
      * It can be particularly long running depending on the algorithm that is passed in (default is SHA-256).
      *
+     * @param context
+     * @param scope
      * @param algorithm
+     * @param fingerprint
+     * @param onSuccess
+     * @param onError
      */
     fun id(
         context: Context,
