@@ -11,6 +11,10 @@ import com.thumbmarkjs.thumbmark_android.components.MemoryComponent
 import com.thumbmarkjs.thumbmark_android.interfaces.ThumbmarkComponent
 import com.thumbmarkjs.thumbmark_android.models.CaptureDevice
 import com.thumbmarkjs.thumbmark_android.models.Fingerprint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
 import java.security.MessageDigest
@@ -59,14 +63,46 @@ object Thumbmark {
 
     /**
      * Returns a hashed representation of the `fingerprint` value.
-     * This function is run on the thread that it was called from.
+     * This function is run on `Dispatchers.IO`.
      * It can be particularly long running depending on the algorithm that is passed in (default is SHA-256).
      *
+     * @param context
+     * @param scope
      * @param algorithm
+     * @param fingerprint
+     * @param onSuccess
+     * @param onError
+     */
+    fun id(
+        context: Context,
+        scope: CoroutineScope = CoroutineScope(Dispatchers.IO),
+        algorithm: String = "SHA-256",
+        fingerprint: Fingerprint = fingerprint(context),
+        onSuccess: (String) -> Unit,
+        onError: (Exception) -> Unit = {}
+    ) = scope.launch {
+        try {
+            val value = id(context, algorithm, fingerprint)
+            onSuccess(value)
+        } catch (e: Exception) {
+            onError(e)
+        }
+    }
+
+    /**
+     * Returns a hashed representation of the `fingerprint` value.
+     * This function runs on the thread that it was called on.
+     * It can be particularly long running depending on the algorithm that is passed in (default is SHA-256).
+     *
+     * @param context
+     * @param algorithm
+     * @param fingerprint
      */
     @Throws(NoSuchAlgorithmException::class)
-    fun id(context: Context, algorithm: String = "SHA-256", fingerprint: Fingerprint = fingerprint(context)) = MessageDigest
-        .getInstance(algorithm)
-        .digest(Json.encodeToString(fingerprint).toByteArray())
+    fun id(
+        context: Context,
+        algorithm: String = "SHA-256",
+        fingerprint: Fingerprint = fingerprint(context)
+    ) = MessageDigest.getInstance(algorithm).digest(Json.encodeToString(fingerprint).toByteArray())
         .fold("") { str, it -> str + "%02x".format(it) }
 }
