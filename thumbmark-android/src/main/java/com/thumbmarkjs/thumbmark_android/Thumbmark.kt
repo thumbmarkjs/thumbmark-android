@@ -10,11 +10,9 @@ import com.thumbmarkjs.thumbmark_android.components.LocalityComponent
 import com.thumbmarkjs.thumbmark_android.components.MemoryComponent
 import com.thumbmarkjs.thumbmark_android.enums.ComponentVolatility
 import com.thumbmarkjs.thumbmark_android.interfaces.ThumbmarkComponent
-import com.thumbmarkjs.thumbmark_android.models.CaptureDevice
 import com.thumbmarkjs.thumbmark_android.models.Fingerprint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
@@ -68,7 +66,7 @@ object Thumbmark {
      *
      * @param value
      */
-    fun setVolatility(value: ComponentVolatility) {
+    fun setMaxVolatility(value: ComponentVolatility) {
         this.volatility = value
     }
 

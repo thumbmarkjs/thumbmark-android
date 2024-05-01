@@ -1,6 +1,6 @@
 <p align="center"><img width="100" src="https://avatars.githubusercontent.com/u/157797798"></p>
 
-# Thumbmark Android 
+# Thumbmark Android
 
 Thumbmark is the world's second best browser fingerprinting library. While not (yet?) as good, it's a free open source alternative to the market leading FingerprintJS. It is easy to use and easily extendable.
 
@@ -33,7 +33,7 @@ dependencies {
 }
 ```
 ## Usage
-The SDK provides a singleton by way of `Thumbmark.kt` This singleton provides two main values; A string identifier and a `Fingerprint` object. 
+The SDK provides a singleton by way of `Thumbmark.kt` This singleton provides two main values; A string identifier and a `Fingerprint` object.
 
 ### Device identifier
 Device identifiers are hashed, this means that they can not be converted back to a fingerprint. You can obtain a, SHA256 hashed, device identifier with the following:
@@ -49,7 +49,7 @@ If you have alternative hashing requirements, you can pass in your own hasher as
 ```kotlin
 import com.thumbmarkjs.thumbmark_android.Thumbmark
 
-let identifier: String? = Thumbmark.id("SHA-1", this)
+val id: String? = Thumbmark.id("SHA-1", this)
 ```
 
 ### Device fingerprint
@@ -59,6 +59,16 @@ A device fingerprint is a strongly typed object, consisting of known hardware an
 import com.thumbmarkjs.thumbmark_android.Thumbmark
 
 val fingerprint: Fingerprint = Thumbmark.fingerprint(this)
+```
+
+### Volatility
+You can also set the desired level of volatility of the components that you'd like to base the computation of the device fingerprint on. Volatility, in the context of this library, is the concept of how likely a value is to change over time, or to put it alternatively, how "fragile" a value might be. You can configure the volatility of the component by calling `setMaxVolatility` before fetching the id:
+
+```kotlin
+import com.thumbmarkjs.thumbmark_android.Thumbmark
+
+Thumbmark.setVolatility(ComponentVolatility.HIGH)
+val id: String = Thumbmark.id(context = this)
 ```
 
 ## Requirements
@@ -78,7 +88,7 @@ val fingerprint: Fingerprint = Thumbmark.fingerprint(this)
 ## Sponsors
 
 ### <img height="50" src="https://3432867.fs1.hubspotusercontent-na1.net/hubfs/3432867/_01.Branding/Ordermentum_Logo_Legacy%20Orange-1.png">
-ThumbmarkAndroid has been developed with 🧡 by [Ordermentum](https://ordermentum.com). A huge thanks goes to them for donating their development efforts to bring ThumbmarkJS to the open source mobile community. 
+ThumbmarkAndroid has been developed with 🧡 by [Ordermentum](https://ordermentum.com). A huge thanks goes to them for donating their development efforts to bring ThumbmarkJS to the open source mobile community.
 
 
 
