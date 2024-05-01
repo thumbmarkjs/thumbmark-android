@@ -29,7 +29,7 @@ Once you have added JitPack to your project, you can import this library by addi
 
 ```kotlin
 dependencies {
-    implementation 'com.github.thumbmarkjs:thumbmark-android:0.1.+'
+    implementation 'com.github.thumbmarkjs:thumbmark-android:1.0.+'
 }
 ```
 ## Usage
