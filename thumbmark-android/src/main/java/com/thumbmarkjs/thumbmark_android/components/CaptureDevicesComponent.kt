@@ -2,6 +2,7 @@ package com.thumbmarkjs.thumbmark_android.components
 
 import android.content.Context
 import android.hardware.Camera
+import com.thumbmarkjs.thumbmark_android.enums.ComponentVolatility
 import com.thumbmarkjs.thumbmark_android.interfaces.Component
 import com.thumbmarkjs.thumbmark_android.models.CaptureDevice
 import java.util.LinkedList
@@ -19,6 +20,9 @@ object CaptureDevicesComponent : Component<List<CaptureDevice>> {
         }
         return result
     }
+
+    override val volatility: ComponentVolatility
+        get() = ComponentVolatility.LOW
 
     private fun facingDescription(from: Int) = when (from) {
         Camera.CameraInfo.CAMERA_FACING_FRONT -> "front"

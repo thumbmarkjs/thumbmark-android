@@ -4,6 +4,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.os.Environment
 import android.os.StatFs
+import com.thumbmarkjs.thumbmark_android.enums.ComponentVolatility
 import com.thumbmarkjs.thumbmark_android.interfaces.Component
 import com.thumbmarkjs.thumbmark_android.models.Memory
 
@@ -15,6 +16,9 @@ object MemoryComponent : Component<Memory> {
             diskSize = diskSize
         )
     }
+
+    override val volatility: ComponentVolatility
+        get() = ComponentVolatility.LOW
 
     private fun ramSize(context: Context?): Long {
             val manager = context?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
