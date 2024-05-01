@@ -18,6 +18,5 @@ object DeviceComponent : Component<Device> {
             osName = System.getProperty("os.name"))
     }
 
-    override val volatility: ComponentVolatility
-        get() = ComponentVolatility.HIGH
+    override val volatility: ComponentVolatility = ComponentVolatility.HIGH
 }

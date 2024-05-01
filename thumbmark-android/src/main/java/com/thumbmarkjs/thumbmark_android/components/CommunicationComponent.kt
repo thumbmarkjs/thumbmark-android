@@ -14,6 +14,5 @@ object CommunicationComponent : Component<Communication> {
         )
     }
 
-    override val volatility: ComponentVolatility
-        get() = ComponentVolatility.MEDIUM
+    override val volatility: ComponentVolatility = ComponentVolatility.MEDIUM
 }

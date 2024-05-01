@@ -21,8 +21,7 @@ object CaptureDevicesComponent : Component<List<CaptureDevice>> {
         return result
     }
 
-    override val volatility: ComponentVolatility
-        get() = ComponentVolatility.LOW
+    override val volatility: ComponentVolatility = ComponentVolatility.LOW
 
     private fun facingDescription(from: Int) = when (from) {
         Camera.CameraInfo.CAMERA_FACING_FRONT -> "front"

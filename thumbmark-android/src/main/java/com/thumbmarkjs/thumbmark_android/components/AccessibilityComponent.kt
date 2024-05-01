@@ -21,6 +21,5 @@ object AccessibilityComponent : Component<Accessibility> {
             nightModeEnabled = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.R }?.isNightModeActive ?: false)
     }
 
-    override val volatility: ComponentVolatility
-        get() = ComponentVolatility.MEDIUM
+    override val volatility: ComponentVolatility = ComponentVolatility.MEDIUM
 }

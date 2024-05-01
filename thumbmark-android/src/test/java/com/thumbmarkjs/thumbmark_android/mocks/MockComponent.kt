@@ -13,6 +13,5 @@ class MockComponent: ThumbmarkComponent {
             return value
         }
 
-    override val volatility: ComponentVolatility
-        get() = ComponentVolatility.LOW
+    override val volatility: ComponentVolatility = ComponentVolatility.LOW
 }

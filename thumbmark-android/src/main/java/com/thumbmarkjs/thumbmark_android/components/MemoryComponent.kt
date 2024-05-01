@@ -17,8 +17,7 @@ object MemoryComponent : Component<Memory> {
         )
     }
 
-    override val volatility: ComponentVolatility
-        get() = ComponentVolatility.LOW
+    override val volatility: ComponentVolatility = ComponentVolatility.LOW
 
     private fun ramSize(context: Context?): Long {
             val manager = context?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
