@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.view.accessibility.AccessibilityManager
+import com.thumbmarkjs.thumbmark_android.enums.ComponentVolatility
 import com.thumbmarkjs.thumbmark_android.interfaces.Component
 import com.thumbmarkjs.thumbmark_android.models.Accessibility
 
@@ -19,4 +20,6 @@ object AccessibilityComponent : Component<Accessibility> {
             touchExplorationEnabled = (context?.getSystemService(Context.ACCESSIBILITY_SERVICE) as? AccessibilityManager)?.isTouchExplorationEnabled ?: false,
             nightModeEnabled = context?.resources?.configuration?.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.R }?.isNightModeActive ?: false)
     }
+
+    override val volatility: ComponentVolatility = ComponentVolatility.MEDIUM
 }

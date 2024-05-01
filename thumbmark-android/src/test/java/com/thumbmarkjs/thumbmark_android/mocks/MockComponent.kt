@@ -1,5 +1,6 @@
 package com.thumbmarkjs.thumbmark_android.mocks
 
+import com.thumbmarkjs.thumbmark_android.enums.ComponentVolatility
 import com.thumbmarkjs.thumbmark_android.interfaces.ThumbmarkComponent
 
 class MockComponent: ThumbmarkComponent {
@@ -12,4 +13,5 @@ class MockComponent: ThumbmarkComponent {
             return value
         }
 
+    override val volatility: ComponentVolatility = ComponentVolatility.LOW
 }

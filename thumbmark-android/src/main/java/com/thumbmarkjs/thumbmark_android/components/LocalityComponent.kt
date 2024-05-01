@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.text.format.DateFormat
 import androidx.core.text.util.LocalePreferences
+import com.thumbmarkjs.thumbmark_android.enums.ComponentVolatility
 import com.thumbmarkjs.thumbmark_android.interfaces.Component
 import com.thumbmarkjs.thumbmark_android.models.Locality
 import java.util.Calendar
@@ -26,4 +27,6 @@ object LocalityComponent : Component<Locality> {
             temperatureUnit = LocalePreferences.getTemperatureUnit()
         )
     }
+
+    override val volatility: ComponentVolatility = ComponentVolatility.MEDIUM
 }
